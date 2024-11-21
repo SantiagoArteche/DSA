@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class BinarySearchProblems {
     public static void main(String[] args) {
         int[] testArray = {1, 2, 5, 10, 16, 19, 22 , 55, 66, 100, 1115, 2000, 4555, 9000, 15015};
@@ -6,6 +11,75 @@ public class BinarySearchProblems {
         System.out.println(floorEqual(testArray, 15));
         System.out.println(infiniteArray(testArray, 15015));
         System.out.println(nextGreatestLetter(new char[]{'c','f','j'}, 'a'));
+        System.out.println(peakIndexMountainArray(new int[]{0,3,2,0,9,5,0}));
+        System.out.println(findPivot(new int[]{2,3,4,5,6,7,0,1}));
+        System.out.println(findInRotatedSortedArray(new int[]{3,4,5,6,7,-1,2}, -1));
+        System.out.println(rotationCount(new int[]{4,5,6,7,0,1,2}));
+    }
+
+    static int rotationCount(int[] arr){
+        int start = 0;
+        int end = arr.length - 1;
+
+        while (start <= end){
+            int middle = start + (end - start) / 2;
+
+            if(middle > start && arr[middle] > arr[middle + 1]){
+                return middle + 1;
+            }else if(middle < end && arr[middle] < arr[middle - 1]){
+                return middle;
+            }else if(arr[middle] <= arr[start]) {
+                end = middle - 1;
+            } else{
+                start = middle + 1;
+            }
+        }
+
+        return -1;
+    }
+
+    static int findInRotatedSortedArray(int[] arr, int target){
+        int ans = binarySearch(arr, target, findPivot(arr) + 1, arr.length - 1);
+        if(ans == -1) ans = binarySearch(arr, target, 0, findPivot(arr));
+        return ans;
+    }
+
+    static int findPivot(int[] arr){
+        int start = 0;
+        int end = arr.length - 1;
+
+        while (start <= end){
+            int mid = start + (end - start) / 2;
+
+            if(mid < end && arr[mid] > arr[mid + 1]){
+                return mid;
+            }else if(mid > start && arr[mid] < arr[mid - 1]){
+                return mid - 1;
+            }else if(arr[mid] <= arr[start]) {
+                end = mid - 1;
+            } else{
+                start = mid + 1;
+            }
+        }
+
+        return -1;
+    }
+
+    static int peakIndexMountainArray(int[] arr){
+        int start = 0;
+        int end = arr.length - 1;
+        while (start < end){
+            int mid = start + (end - start) / 2;
+
+            if(arr[mid] > arr[mid + 1]){
+                end = mid;
+            }else{
+                start = mid + 1;
+            }
+        }
+
+        //end is the same;
+        return start; // start == end;
     }
 
     static char nextGreatestLetter(char[] letters, char target) {
