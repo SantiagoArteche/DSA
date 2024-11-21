@@ -1,8 +1,4 @@
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+package binarysearch;
 
 public class BinarySearch {
     public static void main(String[] args) {

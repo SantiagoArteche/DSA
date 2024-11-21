@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+package binarysearch;
 
 public class BinarySearchProblems {
     public static void main(String[] args) {
