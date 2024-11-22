@@ -15,6 +15,24 @@ public class SortingAlgorithms {
         int[] arr3 = {9, 6, -1, 1, 2, 3, 4, 5, 11};
         insertionSort(arr3);
         showArray(arr3);
+
+        int[] arr4 = {2,2,7,8,1,3,4,3,9};
+        cyclicSort(arr4);
+        showArray(arr4);
+    }
+
+    static void cyclicSort(int[] arr){
+        int i = 0;
+        while(i < arr.length){
+            int correct = arr[i] - 1;
+            if(arr[i] != arr[correct]){
+                int temp = arr[i];
+                arr[i] = arr[correct];
+                arr[correct] = temp;
+            }else{
+                i++;
+            }
+        }
     }
 
     static void bubbleSort(int[] arr) {
