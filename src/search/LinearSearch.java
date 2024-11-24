@@ -1,4 +1,4 @@
-import java.util.Arrays;
+package search;
 
 public class LinearSearch {
     public static void main(String[] args) {
