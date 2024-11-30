@@ -1,22 +1,18 @@
 package recursion;
 
 public class Recursion {
+    static int sum = 0;
     public static void main(String[] args){
-        for(int i = 0; i < 15; i++){
-            System.out.println(fibonacci(i));
-        }
 
-        int[] arr = {3, 4, 5, 6, 9 ,11, 22, 33, 44};
-
-        System.out.println("index of target = " + binarySearch(arr, 44, 0 , arr.length - 1));
+        System.out.println(countZero(104030303, 0));
     }
 
-    public static void print(int start, int end){
-        if(start > end) return;
+    public static void print(int n){
+        if(n == 0) return;
 
-        System.out.println(start);
+        System.out.println(n);
 
-        print(start + 1, end);
+        print(n - 1);
     }
 
     public static int fibonacci(int n){
@@ -43,5 +39,47 @@ public class Recursion {
         }
 
         return binarySearch(arr, target, middle + 1, end);
+    }
+
+    public static int factorial(int n){
+        if(n == 0) return 1;
+
+        return n * factorial(n - 1);
+    }
+
+    public static int sumOfDigits(int n){
+        if(n == 0) return 0;
+
+        return n % 10 + sumOfDigits(n / 10);
+    }
+
+
+    public static void reverseNumber(int n){
+        if(n == 0) {
+            return;
+        }
+
+        int remainder = n % 10;
+        sum = sum * 10 + remainder;
+        reverseNumber(n / 10);
+    }
+
+
+
+//    public static StringBuilder reverseNumber(int n){ // My favorite way to reverse a number
+//        StringBuilder reversed = new StringBuilder();
+//        while(n > 0){
+//            reversed.append(n % 10);
+//            n /= 10;
+//        }
+//        return reversed;
+//    }
+
+    public static int countZero(int n, int count){
+        if(n == 0) return count;
+
+        if(n % 10 == 0) count++;
+
+        return countZero(n / 10, count);
     }
 }
