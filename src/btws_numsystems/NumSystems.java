@@ -1,15 +1,17 @@
 package btws_numsystems;
 
 import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class NumSystems {
     public static void main(String[] args){
-//        System.out.println(fromDecimalToBinary(4));
-        System.out.println(fromBinaryToOctal(1000));
+//       System.out.println(fromDecimalToBinary(4));
+//       System.out.println(fromBinaryToOctal(1000));
+        System.out.println(magicNumber(6));
+        for(int i = 0; i < 100; i++){
+            if(isPrime(i)) System.out.println(i);
+        }
+        System.out.println(isOdd(2));
     }
 
     static StringBuilder fromDecimalToBinary(int num){
@@ -45,6 +47,32 @@ public class NumSystems {
     static StringBuilder fromBinaryToOctal(int num){
         int decimal = fromBinaryToDecimal(num);
         return fromDecimalToOctal(decimal);
+    }
+
+    static int magicNumber(int n){
+        int base = 5;
+        int ans = 0;
+        while(n > 0){
+            int last = n & 1;
+            n = n >> 1;
+            ans += last * base;
+            base = base * 5;
+        }
+        return ans;
+    }
+
+    static boolean isPrime(int n){
+        if(n <= 1) return false;
+        for(int i = 2; i < n; i++){
+            if(n % i == 0){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    static boolean isOdd(int n){
+        return (n & 1) == 1;
     }
 
 }
