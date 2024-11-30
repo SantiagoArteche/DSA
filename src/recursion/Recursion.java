@@ -32,16 +32,16 @@ public class Recursion {
     public static int binarySearch(int[] arr, int target, int start, int end){
         if(arr.length == 0) return -1;
 
-        int middle = start + (end - start) / 2;
-
         if(start > end) return -1;
+
+        int middle = start + (end - start) / 2;
 
         if(arr[middle] == target) return middle;
 
         if(arr[middle] > target){
             return binarySearch(arr, target, start, middle - 1);
-        }else{
-            return binarySearch(arr, target, middle + 1, end);
         }
+
+        return binarySearch(arr, target, middle + 1, end);
     }
 }
