@@ -11,6 +11,8 @@ public class Permutation {
             System.out.println(p);
             return;
         }
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.toString();
 
         char ch = up.charAt(0);
 
