@@ -5,6 +5,9 @@ public class DoubleLinkedList {
     Node tail;
     int size;
 
+    public DoubleLinkedList() {
+        this.size = 0;
+    }
 
     public void insertFirst(int val){
         Node node = new Node(val);
@@ -110,10 +113,6 @@ public class DoubleLinkedList {
             node = node.prev;
         }
         System.out.print("END");
-    }
-
-    public DoubleLinkedList(){
-        this.size = 0;
     }
 
     class Node{
