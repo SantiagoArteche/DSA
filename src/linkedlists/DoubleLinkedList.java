@@ -38,6 +38,30 @@ public class DoubleLinkedList {
         size++;
     }
 
+    public void insert(int val, int idx){
+        if(idx == 0){
+            insertFirst(val);
+            return;
+        }
+
+        if(idx == this.size - 1){
+            insertLast(val);
+            return;
+        }
+
+        Node temp = this.head;
+
+        for(int i = 1; i < idx; i++){
+            temp = temp.next;
+        }
+
+        Node node = new Node(val, temp.next, temp);
+        temp.next.prev = node;
+        temp.next = node;
+
+        size++;
+    }
+
     public void deleteFirst(){
         this.head.next.prev = null;
         this.head = this.head.next;
@@ -71,30 +95,6 @@ public class DoubleLinkedList {
         }
         temp.next.next.prev = temp;
         temp.next = temp.next.next;
-    }
-
-    public void insert(int val, int idx){
-        if(idx == 0){
-            insertFirst(val);
-            return;
-        }
-
-        if(idx == this.size - 1){
-            insertLast(val);
-            return;
-        }
-
-        Node temp = this.head;
-
-        for(int i = 1; i < idx; i++){
-            temp = temp.next;
-        }
-
-        Node node = new Node(val, temp.next, temp);
-        temp.next.prev = node;
-        temp.next = node;
-
-        size++;
     }
 
     public void display(){
