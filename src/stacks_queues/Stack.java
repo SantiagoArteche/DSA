@@ -54,7 +54,7 @@ public class Stack {
 
     public int pop(){
         if(isEmpty()){
-            System.out.println("Cannot pop from an empty stack");
+            System.out.println("Cannot pop from an empty queue");
         }
 
 
@@ -65,7 +65,7 @@ public class Stack {
 
     public int peek(){
         if(isEmpty()){
-            System.out.println("Cannot peak from an empty stack");
+            System.out.println("Cannot peak from an empty queue");
         }
 
         return stack[ptr];
