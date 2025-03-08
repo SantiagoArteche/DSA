@@ -71,7 +71,7 @@ public class BinaryTree {
         Node left;
         Node right;
 
-        public Node(int val){
+        public Node(int val) {
             this.val = val;
         }
     }
@@ -81,4 +81,6 @@ public class BinaryTree {
         binaryTree.populate(new Scanner(System.in));
         binaryTree.prettyDisplay();
     }
+
+
 }
