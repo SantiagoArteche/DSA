@@ -16,9 +16,13 @@ public class SortingAlgorithms {
         insertionSort(arr3);
         showArray(arr3);
 
-        int[] arr4 = {2,2,7,8,1,3,4,3,9};
+        int[] arr4 = {2, 2, 7, 8, 1, 3, 4, 3, 9};
         cyclicSort(arr4);
         showArray(arr4);
+
+        int[] arr5 = {3, 4, 1, 3, 2, 5, 2};
+        countSort(arr5);
+        showArray(arr5);
     }
 
     static void cyclicSort(int[] arr){
@@ -86,6 +90,34 @@ public class SortingAlgorithms {
         int temp = arr[val1];
         arr[val1] = arr[val2];
         arr[val2] = temp;
+    }
+
+    static void countSort(int[] arr){
+        if(arr == null || arr.length <= 1) return;
+
+        int max = arr[0];
+
+        for(int num: arr){
+            if(num > max){
+                max = num;
+            }
+        }
+
+        int[] countArr = new int[max + 1];
+
+        for(int num: arr){
+            countArr[num]++;
+        }
+
+        int idx = 0;
+        for(int i = 0; i <= max; i++){
+            while(countArr[i] > 0){
+                arr[idx] = i;
+                idx++;
+                countArr[i]--;
+            }
+        }
+
     }
 
     static void showArray(int[] arr) {
