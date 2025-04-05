@@ -16,9 +16,9 @@ public class HashMap<K, V> {
     }
 
     public void put(K key, V value){
-        int hash = Math.abs(key.hashCode() % list.size());
+        int hash = Math.abs(key.hashCode() % this.list.size());
 
-        LinkedList<Entity> entities = list.get(hash);
+        LinkedList<Entity> entities = this.list.get(hash);
 
         for(Entity entity: entities){
             if(entity.key.equals(key)){
@@ -27,8 +27,8 @@ public class HashMap<K, V> {
             }
         }
 
-        if((float)(this.size) / list.size() > lf){
-            reHash();
+        if((float)(this.size) / this.list.size() > lf){
+            this.reHash();
         }
 
         entities.add(new Entity((String) key,(String) value));
@@ -50,7 +50,7 @@ public class HashMap<K, V> {
 
         for(LinkedList<Entity> entries: old){
             for(Entity entry: entries){
-                put((K) entry.key, (V) entry.value);
+                this.put((K) entry.key, (V) entry.value);
             }
         }
     }
@@ -58,6 +58,7 @@ public class HashMap<K, V> {
     public V get(K key){
         int hash = Math.abs(key.hashCode() % this.list.size());
         LinkedList<Entity> entities = this.list.get(hash);
+
         for(Entity entity: entities){
             if(entity.key.equals(key)){
                 return (V) entity.value;
@@ -125,7 +126,6 @@ public class HashMap<K, V> {
 
         System.out.println(hashMap);
         System.out.println(hashMap.get("Santi"));
-
     }
 
 
