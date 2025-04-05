@@ -67,7 +67,7 @@ public class HuffmanEncoder {
 
 
 
-    public  void initEncoderDecoder(Node node, String output){
+    public void initEncoderDecoder(Node node, String output){
         if(node == null){
             return;
         }
